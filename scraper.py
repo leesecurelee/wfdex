@@ -32,13 +32,30 @@ aquisition_titles = aquisition_headers.split()
 # Puts the list in an empty Data Frame
 df = pd.DataFrame(columns = aquisition_titles)
 
+'''
+==================================================
+    At this point I have the categories "Warframe, Location, Mission, Boss, Other, Platinum, Credits"
+
+    I need to get the data and add it to the data framelike the command above this comment
+
+==================================================
+'''
+# Data from each column, except the Warframe
 column_data = table.find_all('tr')
 
-
+'''
 for row in column_data:
     row_data = row.find_all('td')
     individual_row_data = [data.text.strip() for data in row_data]
     print(individual_row_data)
+
+'''
+
+for column in column_data:
+     total_data = column.find_all('td')
+     warframe_data = [data.text.strip() for data in total_data]
+     print(warframe_data)
+
 
 
 print(df)

@@ -32,6 +32,15 @@ aquisition_titles = aquisition_headers.split()
 # Puts the list in an empty Data Frame
 df = pd.DataFrame(columns = aquisition_titles)
 
+column_data = table.find_all('tr')
+
+
+for row in column_data:
+    row_data = row.find_all('td')
+    individual_row_data = [data.text.strip() for data in row_data]
+    print(individual_row_data)
+
+
 print(df)
 
 

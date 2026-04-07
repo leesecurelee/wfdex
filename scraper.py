@@ -28,6 +28,8 @@ aquisition_titles = aquisition_headers.split()
 # RESULT 
 # ['Warframe', 'Location', 'Mission', 'Boss', 'Other', 'Platinum', 'Credits']
 
+
+# Puts the list in an empty Data Frame
 df = pd.DataFrame(columns = aquisition_titles)
 
 print(df)

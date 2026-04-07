@@ -13,9 +13,9 @@ Expansion idea: Integrate into a discord bot I create.
 
 Need to get each Warframe name and details on how to farm them.
 
-Using https://wiki.warframe.com/w/Warframes_Comparison#Acquisition_
 
 ## Started first steps:
 
- - Using ==https://wiki.warframe.com/w/Warframes_Comparison#Acquisition_==
-
+ - Using [Warframe Wiki](https://wiki.warframe.com/w/Warframes_Comparison#Acquisition_)
+ - YT Video References
+    - [Alex The Analyst]

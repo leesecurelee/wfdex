@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 # For creating Data Frames
 import pandas as pd
 
-#=====================Standard Scraper Setup======================
+#=============== Standard Scraper - Fetch the page ===============
 #=================================================================
 
 # Standard way to set the URL being scraped
@@ -55,8 +55,6 @@ for wf in wf_name_data:
 warframe_names = warframe_name_data[6:]
 #print(warframe_names)  <--- List of all Warframes
 
-#=================================================================
-
 '''
 #=================================================================
 #=================================================================
@@ -66,32 +64,27 @@ warframe_names = warframe_name_data[6:]
 #=================================================================
 #=================================================================
 '''
+# Add Warfame names to the Warframe column of the DataFrame with Primes filtered out(might do Primes separate)
+
+filtered_names = []
+
+for name in warframe_names:
+    if 'Prime' not in name:
+        filtered_names.append(name)
+    elif name == 'Excalibur Prime':
+        filtered_names.append(name)
 
 
-'''
-I'm pretty sure I need to run this loop at least two or three times due to the setup of the table on the webpage. Once for the headers, then for the Warframe names, then for the data. Trying several ways before moving forward. Keeping what I know works until ready to slim down what isn't needed. 
-'''
-
-
-# Data from each column, except the Warframe
-column_data = table.find_all('tr')
-
-'''
- This is should be all of the Warfame info I will be using
-
-for row in column_data:
-    row_data = row.find_all('td')
-    individual_row_data = [data.text.strip() for data in row_data]
-    print(individual_row_data)
-
-
- This is all of the Warfame info I will be using
-
-for column in column_data:
-     total_data = column.find_all('td')
-     warframe_data = [data.text.strip() for data in total_data]
-     print(warframe_data)
-
-
-'''
-# print(df)
+# Select table rows (only those with <td> cells)
+table = soup.find('table', class_='article-table sortable')
+table_rows = [row for row in table.find_all('tr') if row.find('td')]
+# Populate DataFrame
+for idx, table_item in enumerate(table_rows):
+    wf_deets = table_item.find_all('td')
+    warframe_table_data = [info.text.strip() for info in wf_deets]
+    
+    if len(warframe_table_data) == 6:
+        df.loc[len(df)] = [filtered_names[idx]] + warframe_table_data
+# Preview
+print(df.head(10))
+print(f"\nTotal rows: {len(df)}")

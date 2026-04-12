@@ -64,7 +64,7 @@ warframe_names = warframe_name_data[6:]
 #=================================================================
 #=================================================================
 '''
-# Add Warfame names to the Warframe column of the DataFrame with Primes filtered out(might do Primes separate)
+# Add Warfame names to the Warframe column of the DataFrame with Primes filtered out(might handle Primes separately)
 
 filtered_names = []
 
@@ -74,10 +74,10 @@ for name in warframe_names:
     elif name == 'Excalibur Prime':
         filtered_names.append(name)
 
-
 # Select table rows (only those with <td> cells)
 table = soup.find('table', class_='article-table sortable')
 table_rows = [row for row in table.find_all('tr') if row.find('td')]
+
 # Populate DataFrame
 for idx, table_item in enumerate(table_rows):
     wf_deets = table_item.find_all('td')
@@ -85,6 +85,9 @@ for idx, table_item in enumerate(table_rows):
     
     if len(warframe_table_data) == 6:
         df.loc[len(df)] = [filtered_names[idx]] + warframe_table_data
+
 # Preview
-print(df.head(10))
-print(f"\nTotal rows: {len(df)}")
+#print(df.head(10))
+#print(f"\nTotal rows: {len(df)}")
+
+df.to_csv(r'~/Documents/Warframe_Info.csv')

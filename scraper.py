@@ -90,4 +90,6 @@ for idx, table_item in enumerate(table_rows):
 #print(df.head(10))
 #print(f"\nTotal rows: {len(df)}")
 
-df.to_csv(r'~/Documents/Warframe_Info.csv')
+# Save a csv copy
+#df.to_csv(r'~/Documents/Warframe_Info.csv')
+

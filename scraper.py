@@ -56,13 +56,16 @@ warframe_names = warframe_name_data[6:]
 #print(warframe_names)  <--- List of all Warframes
 
 '''
-#=================================================================
-#=================================================================
-    At this point I have the categories/columns ("Warframe, Location, Mission, Boss, Other, Platinum, Credits") and the Warfame names to be used as rows
+=================================================================
+=================================================================
+    At this point I have the categories/columns 
+    ("Warframe, Location, Mission, Boss, Other, Platinum, Credits") 
+    and the Warfame names to be used as rows
 
-    I need to get the data and add everything to the data framelike the command I ran for the column headers
-#=================================================================
-#=================================================================
+    I need to get the data and add everything to the data 
+    framelike the command I ran for the column headers
+=================================================================
+=================================================================
 '''
 # Add Warfame names to the Warframe column of the DataFrame with Primes filtered out(might handle Primes separately)
 
@@ -85,6 +88,40 @@ for idx, table_item in enumerate(table_rows):
     
     if len(warframe_table_data) == 6:
         df.loc[len(df)] = [filtered_names[idx]] + warframe_table_data
+
+
+
+
+'''
+================================================================
+ Here is where we start taking input and returning data
+ about each Warframe in a numbered fashion. 
+ Keeping it simple for now
+================================================================
+'''
+
+# Show user a basic numbered list of all Warframes 
+for num, wf_name in enumerate(filtered_names):
+    print(f"{num + 1}. {wf_name}")
+
+user_choice = int(input("Pick a number: "))
+
+chosen_warframe = filtered_names[user_choice - 1]
+
+print(f"You chose: {chosen_warframe}")
+
+
+# Show user a basic numbered list of categories to choose from
+for num, category in enumerate(aquisition_header):
+    print(f"{num + 1}. {aquisition_header}")
+
+
+user_second_choice = int(input("Pick a number: "))
+
+chosen_warframe_category = [user_second_choice - 1]
+
+
+print(f"You chose: {chosen_warframe_category}")
 
 # Preview
 #print(df.head(10))

@@ -108,20 +108,30 @@ user_choice = int(input("Pick a number: "))
 
 chosen_warframe = filtered_names[user_choice - 1]
 
-print(f"You chose: {chosen_warframe}")
+print(f"\nYou chose: {chosen_warframe}")
 
 
 # Show user a basic numbered list of categories to choose from
-for num, category in enumerate(aquisition_header):
-    print(f"{num + 1}. {aquisition_header}")
+for num, category in enumerate(aquisition_header[1:]):
+    print(f"{num + 1}. {category}")
 
 
-user_second_choice = int(input("Pick a number: "))
+user_second_choice = int(input("\nPick a number: "))
 
-chosen_warframe_category = [user_second_choice - 1]
+chosen_warframe_category = aquisition_header[user_second_choice]
 
 
-print(f"You chose: {chosen_warframe_category}")
+print(f"You chose: {chosen_warframe_category}\n \n ")
+
+
+
+# TODO need to use the chosen category to print the details that apply to the chosen warframe
+response = df.loc[user_choice, chosen_warframe_category]
+
+print(f"Warframe: {chosen_warframe} \n\n--Details--\n{chosen_warframe_category}: {response}")
+
+
+
 
 # Preview
 #print(df.head(10))
